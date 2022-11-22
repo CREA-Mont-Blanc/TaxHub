@@ -1,7 +1,7 @@
 import pytest
 
 from apptax.database import db
-from apptax.taxonomie.models import BibListes, BibNoms, BibThemes, BibAttributs
+from apptax.taxonomie.models import BibListes,   BibThemes, BibAttributs, Taxref
 
 bibnom_exemple = [
     (67111, 67111, "Ablette", None),
@@ -21,8 +21,8 @@ def noms_example():
     liste = BibListes.query.filter_by(code_liste="100").one()
     with db.session.begin_nested():
         for cd_nom, cd_ref, nom_francais, comments in bibnom_exemple:
-            nom = BibNoms(
-                cd_nom=cd_nom, cd_ref=cd_ref, nom_francais=nom_francais, comments=comments
+            nom = Taxref.query.one(
+               cd_nom
             )
             db.session.add(nom)
             liste.noms.append(nom)
