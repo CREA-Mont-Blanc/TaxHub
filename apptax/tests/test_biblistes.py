@@ -14,8 +14,8 @@ class TestAPIBibListes:
                 "nom_liste": str,
                 "desc_liste": str,
                 "picto": str,
-                "regne": str,
-                "group2_inpn": str,
+                "regne": Or(str, None),
+                "group2_inpn": Or(str, None),
                 "nb_taxons": int,
             }
         ]
